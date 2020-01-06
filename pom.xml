@@ -11,6 +11,7 @@
     <modules>
         <module>small-sso-core</module>
         <module>small-sso-server</module>
+        <module>small-sso-demo</module>
     </modules>
 
     <properties>
