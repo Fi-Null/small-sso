@@ -1,6 +1,6 @@
 package com.small.sso.core.util;
 
-import com.small.sso.core.conf.SmallSsoConf;
+import com.small.sso.core.domain.SmallSsoConf;
 import com.small.sso.core.domain.SmallSsoUser;
 
 /**
@@ -36,8 +36,8 @@ public class SsoLoginStoreUtil {
         String redisKey = redisKey(storeKey);
         Object objectValue = JedisUtil.getObjectValue(redisKey);
         if (objectValue != null) {
-            SmallSsoUser xxlUser = (SmallSsoUser) objectValue;
-            return xxlUser;
+            SmallSsoUser smallUser = (SmallSsoUser) objectValue;
+            return smallUser;
         }
         return null;
     }
@@ -56,11 +56,11 @@ public class SsoLoginStoreUtil {
      * put
      *
      * @param storeKey
-     * @param xxlUser
+     * @param smallUser
      */
-    public static void put(String storeKey, SmallSsoUser xxlUser) {
+    public static void put(String storeKey, SmallSsoUser smallUser) {
         String redisKey = redisKey(storeKey);
-        JedisUtil.setObjectValue(redisKey, xxlUser, redisExpireMinute * 60);  // minute to second
+        JedisUtil.setObjectValue(redisKey, smallUser, redisExpireMinute * 60);  // minute to second
     }
 
     private static String redisKey(String sessionId) {

@@ -1,6 +1,4 @@
-package com.small.sso.core.conf;
-
-import com.small.sso.core.domain.ReturnT;
+package com.small.sso.core.domain;
 
 /**
  * @author null

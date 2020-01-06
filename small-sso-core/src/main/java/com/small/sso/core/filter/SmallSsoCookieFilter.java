@@ -2,7 +2,7 @@ package com.small.sso.core.filter;
 
 import com.small.sso.core.ant.AntPathMatcher;
 import com.small.sso.core.ant.PathMatcher;
-import com.small.sso.core.conf.SmallSsoConf;
+import com.small.sso.core.domain.SmallSsoConf;
 import com.small.sso.core.domain.SmallSsoUser;
 import com.small.sso.core.util.SsoCookieLoginUtil;
 import org.slf4j.Logger;

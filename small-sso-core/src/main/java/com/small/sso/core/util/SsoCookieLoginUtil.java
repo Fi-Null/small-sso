@@ -1,6 +1,6 @@
 package com.small.sso.core.util;
 
-import com.small.sso.core.conf.SmallSsoConf;
+import com.small.sso.core.domain.SmallSsoConf;
 import com.small.sso.core.domain.SmallSsoUser;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +28,7 @@ public class SsoCookieLoginUtil {
                              SmallSsoUser SmallSsoUser,
                              boolean ifRemember) {
 
-        String storeKey = SsoSessionIdUtil.parseStoreKey(sessionId);
+        String storeKey = ParseSessionIdUtil.parseStoreKey(sessionId);
         if (storeKey == null) {
             throw new RuntimeException("parseStoreKey Fail, sessionId:" + sessionId);
         }
@@ -51,7 +51,7 @@ public class SsoCookieLoginUtil {
             return;
         }
 
-        String storeKey = SsoSessionIdUtil.parseStoreKey(cookieSessionId);
+        String storeKey = ParseSessionIdUtil.parseStoreKey(cookieSessionId);
         if (storeKey != null) {
             SsoLoginStoreUtil.remove(storeKey);
         }

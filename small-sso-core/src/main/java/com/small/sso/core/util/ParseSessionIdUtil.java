@@ -9,7 +9,7 @@ import com.small.sso.core.domain.SmallSsoUser;
  * @description
  * @createDate 1/3/20 5:17 PM
  */
-public class SsoSessionIdUtil {
+public class ParseSessionIdUtil {
 
     /**
      * make client sessionId

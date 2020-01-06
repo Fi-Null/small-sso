@@ -1,6 +1,6 @@
 package com.small.sso.core.util;
 
-import com.small.sso.core.conf.SmallSsoConf;
+import com.small.sso.core.domain.SmallSsoConf;
 import com.small.sso.core.domain.SmallSsoUser;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ public class SsoTokenLoginUtil {
      */
     public static void login(String sessionId, SmallSsoUser smallUser) {
 
-        String storeKey = SsoSessionIdUtil.parseStoreKey(sessionId);
+        String storeKey = ParseSessionIdUtil.parseStoreKey(sessionId);
         if (storeKey == null) {
             throw new RuntimeException("parseStoreKey Fail, sessionId:" + sessionId);
         }
@@ -37,7 +37,7 @@ public class SsoTokenLoginUtil {
      */
     public static void logout(String sessionId) {
 
-        String storeKey = SsoSessionIdUtil.parseStoreKey(sessionId);
+        String storeKey = ParseSessionIdUtil.parseStoreKey(sessionId);
         if (storeKey == null) {
             return;
         }
@@ -64,14 +64,14 @@ public class SsoTokenLoginUtil {
      */
     public static SmallSsoUser loginCheck(String sessionId) {
 
-        String storeKey = SsoSessionIdUtil.parseStoreKey(sessionId);
+        String storeKey = ParseSessionIdUtil.parseStoreKey(sessionId);
         if (storeKey == null) {
             return null;
         }
 
         SmallSsoUser smallUser = SsoLoginStoreUtil.get(storeKey);
         if (smallUser != null) {
-            String version = SsoSessionIdUtil.parseVersion(sessionId);
+            String version = ParseSessionIdUtil.parseVersion(sessionId);
             if (smallUser.getVersion().equals(version)) {
 
                 // After the expiration time has passed half, Auto refresh
